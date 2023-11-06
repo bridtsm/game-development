@@ -1,15 +1,16 @@
-﻿using SharpDX.Direct2D1;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Project1
+namespace Project1.interfaces
 {
     internal interface IGameObject
     {
-        void Update();
+        void Update(GameTime gameTime);
         void Draw(SpriteBatch spriteBatch);
     }
 }

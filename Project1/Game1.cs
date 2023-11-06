@@ -8,6 +8,8 @@ namespace Project1
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+        private Texture2D texture;
+        Hero hero;
 
         public Game1()
         {
@@ -27,7 +29,15 @@ namespace Project1
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            texture = Content.Load<Texture2D>("dUH5P");
+
+            InitializeGameObjects();    
             // TODO: use this.Content to load your game content here
+        }
+
+        private void InitializeGameObjects()
+        {
+            hero = new Hero(texture);
         }
 
         protected override void Update(GameTime gameTime)
@@ -36,6 +46,7 @@ namespace Project1
                 Exit();
 
             // TODO: Add your update logic here
+            hero.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -45,6 +56,9 @@ namespace Project1
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            hero.Draw(_spriteBatch);
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
